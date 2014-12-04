@@ -38,8 +38,7 @@ $(document).ready(function() {
                         lng: Number(station.location.longitude)
                     },
                     map: map
-                }); // to filter we want to use forEach and make both camera label and search string lower case and the
-                    // use index of to search through camera label
+                });
                 markers.push(marker);
 
                 google.maps.event.addListener(marker, 'click', function(){
