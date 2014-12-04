@@ -24,7 +24,6 @@ $(document).ready(function() {
     });
 
     var infoWindow = new google.maps.InfoWindow();
-
     var station;
     var markers = [];
 
@@ -48,10 +47,10 @@ $(document).ready(function() {
                     html += '<p>' + '<img src = "' + station.imageurl.url + '"/>' + '</p>';
 
                     infoWindow.setContent(html);
+                    
+                    map.panTo(this.getPosition());
                     infoWindow.open(map, this);
-
-                    panTo(getPosition(station.lat, station.lng));
-                });
+                })
             });
 
         })
@@ -61,13 +60,16 @@ $(document).ready(function() {
         })
         .always(function(){
             $('#ajax-loader').fadeOut();
-
+        });
 
     var filterMarkers = $('#search');
+    console.log(filterMarkers);
     filterMarkers.bind('search keyup', function(){
         station.forEach(function(station, idx){
             var search = filterMarkers.val().toLowerCase();
             var street = station.cameralabel.toLowerCase();
+            console.log(search);
+            console.log(street);
             if(street.indexOf(search) || filterMarkers.value == ''){
                 markers[idx].setMap(null);
             }
@@ -78,5 +80,4 @@ $(document).ready(function() {
         });
 
     })
-
 });
