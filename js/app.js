@@ -69,7 +69,7 @@ $(document).ready(function() {
             var street = station.cameralabel.toLowerCase();
             console.log(search);
             console.log(street);
-            if(street.indexOf(search) || filterMarkers.value == ''){
+            if(street.indexOf(search) == -1 || filterMarkers.value == ''){
                 markers[idx].setMap(null);
             }
             else{
