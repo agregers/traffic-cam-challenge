@@ -31,7 +31,7 @@ $(document).ready(function() {
         .done(function(data){
             station = data;
 
-            data.forEach(function(station, itemIndex){
+            data.forEach(function(station){
                 var marker = new google.maps.Marker({
                     position: {
                         lat: Number(station.location.latitude),
