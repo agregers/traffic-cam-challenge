@@ -61,5 +61,22 @@ $(document).ready(function() {
         })
         .always(function(){
             $('#ajax-loader').fadeOut();
+
+
+    var filterMarkers = $('#search');
+    filterMarkers.bind('search keyup', function(){
+        station.forEach(function(station, idx){
+            var search = filterMarkers.val().toLowerCase();
+            var street = station.cameralabel.toLowerCase();
+            if(street.indexOf(search) || filterMarkers.value == ''){
+                markers[idx].setMap(null);
+            }
+            else{
+                markers[idx].setMap(map);
+            }
+
         });
+
+    })
+
 });
